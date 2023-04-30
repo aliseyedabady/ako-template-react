@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Kalameh", sans-serif !important;
+}
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0 !important;
+}
+html {
+  height: 100%;
+}
+body {
+  font-family: "Kalameh", sans-serif !important;
+  font-size: 16px;
+  direction: rtl;
+  overflow-x: hidden;
+  background-color: var(--background) !important;
+  &::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ecf0fd;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(6, 25, 98, 0.8);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 25, 98, 1);
+  }
+}
+html[lang="fa"] {
+  .num {
+    font-family: "KalamehWebFaNum", "Kalameh", sans-serif !important;
+  }
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+.container {
+  padding-inline: 9%;
+}
+.mb-7 {
+  margin-bottom: 7px;
+}
+.mb-24 {
+  margin-bottom: 24px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.ant-modal-title,
+.ant-modal-close {
+  display: none !important;
+}
+.ant-modal-mask {
+  background: rgba(244, 247, 254, 0.8) !important;
+  backdrop-filter: blur(2px) !important;
+}
+.ant-modal-content {
+  box-shadow: var(--box-shadow) !important;
+  padding: 38px 43px !important;
+  border-radius: 20px;
+}
+.ant-spin-dot-spin {
+  vertical-align: -3px !important;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.mt-11 {
+  margin-bottom: 15px;
+}
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
