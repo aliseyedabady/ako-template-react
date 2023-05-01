@@ -1,8 +1,13 @@
 import "./Assets/styles/index.scss";
-import { useGet } from "./Hooks/useGet";
-
+import { Login } from "./Components/Auth";
+import Routing from "./Components/Routing";
+import { authRouter } from "./Router";
 function App() {
-  return <div>sw</div>;
+  return (
+    <div>
+      <Routing routes={authRouter} />
+    </div>
+  );
 }
 
 export default App;

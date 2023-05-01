@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import NotFound from "../../Pages/NotFound";
+// import NotFound from "../../Pages/NotFound";
 
 const Routing = ({ routes = [], redirect }) => {
   return (
@@ -12,13 +12,13 @@ const Routing = ({ routes = [], redirect }) => {
             path={route.path}
             element={
               <route.layout>
-                <route.component />
+                <route.component props={route} />
               </route.layout>
             }
           />
         );
       })}
-      <Route path="*" element={<NotFound />} />
+      {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   );
 };

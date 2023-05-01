@@ -44,7 +44,7 @@ export const useGet = ({ url = "", filters }) => {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [searchParams]);
 
-  return { data, loading };
+  return { data, loading, filterDelete, changeObj };
 };
