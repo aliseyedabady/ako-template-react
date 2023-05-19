@@ -248,3 +248,6 @@ export const checkMobile = mobile => {
   }
   return true;
 };
+export const isInWeek = time => {
+  return moment().locale("fa").diff(moment(time).locale("fa"), "days") < 8;
+};
