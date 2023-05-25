@@ -1,0 +1,42 @@
+.form-v1 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  .form-control {
+    display: flex;
+    flex-direction: column;
+    label {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    input {
+      background-color: transparent;
+
+      background-color: #f4f7ff;
+      padding: 5px 20px;
+      border-radius: 5px;
+      border-color: transparent;
+      &:focus {
+        outline: none;
+      }
+      &[data-error="true"] {
+        border-color: red;
+      }
+    }
+    .error-form {
+      color: red;
+      font-size: 11px;
+    }
+  }
+  button {
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    background-color: #3461fd;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 0;
+  }
+}
