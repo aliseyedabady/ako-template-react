@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMainContext } from "../Context";
 import { useSearchParams } from "react-router-dom";
 
-export const useGet = ({ url = "", filters }) => {
+export const useGet = ({ route = "", filters }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const { get } = useMainContext();
@@ -10,7 +10,7 @@ export const useGet = ({ url = "", filters }) => {
 
   const getData = async () => {
     setLoading(true);
-    const { data } = await get(`${url}?${searchParams}`, {
+    const { data } = await get(`${route}?${searchParams}`, {
       ...createObjFilter(),
     });
     setData(data);
@@ -34,17 +34,10 @@ export const useGet = ({ url = "", filters }) => {
     });
     setSearchParams({ ...obj, [key]: value });
   };
-  const filterDelete = key => {
-    let obj = {};
-    filters.map(element => {
-      if (element.key !== key)
-        obj = { ...obj, [element.key]: searchParams.get(element.key) };
-    });
-    setSearchParams({ ...obj });
-  };
-  useEffect(() => {
+
+  useMemo(() => {
     getData();
   }, [searchParams]);
 
-  return { data, loading, filterDelete, changeObj };
+  return { data, loading, changeObj };
 };

@@ -3,33 +3,36 @@ import { useMainContext } from "../Context";
 import { useNavigate } from "react-router-dom";
 
 export const usePost = ({
-  url = "",
-  sortInit = state => {
-    return state;
-  },
-  sort = state => {
-    return state;
-  },
-  message = false,
+  route = "",
+  initial = {},
+  initialState,
   redirect = false,
+  message = false,
 }) => {
-  const [form, setForm] = useState({ ...sortInit() });
-  const { post } = useMainContext();
+  const [form, setForm] = useState({ ...initialState });
   const [loading, setLoading] = useState({ send: false });
+  const { post } = useMainContext();
   const navigate = useNavigate();
 
-  const setter = (key, value) => {
-    setForm({ ...form, [key]: value });
-  };
-
-  const sendData = async () => {
+  const send = async () => {
     setLoading({ ...loading, send: true });
-    const { status } = await post(url, { ...form, ...sort(form) }, message);
-    if (redirect && status === 200) {
-      navigate(redirect);
+    const { status, data } = await post(
+      route,
+      { ...initial, ...form },
+      message
+    );
+    if (+status === 200) {
+      if (typeof redirect == "string") {
+        navigate(redirect);
+      } else if (typeof redirect == "function") {
+        redirect(data);
+      }
     }
+    setForm({});
     setLoading({ ...loading, send: false });
   };
 
-  return { sendData, setter };
+  const setter = (key, value) => setForm({ ...form, [key]: value });
+
+  return { form, setForm, send, setter, loading };
 };
