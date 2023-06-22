@@ -6,7 +6,7 @@ import { authRouter } from "./Router";
 function App() {
   return (
     <div>
-      <FormV1 />
+      <input className="rounded-sm" />
       {/* <Routing routes={authRouter} /> */}
     </div>
   );
